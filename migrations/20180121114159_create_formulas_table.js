@@ -1,7 +1,7 @@
 
 module.exports = {
   up(knex, Promise) {
-    return knex.schema.createTable('formuals', (table) => {
+    return knex.schema.createTable('formulas', (table) => {
       table.increments();
       table.text('english_name').notNull();
       table.text('pinyin_name');
