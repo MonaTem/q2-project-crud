@@ -31,8 +31,17 @@ app.get("/new", (req, res) => {
   http --json \
     GET 'http://localhost:8000/formulas/1'
 */
+
+
 app.get("/:fid", (req, res) => {
-  findFormula(req).then(formulas => res.json(formulas[0]));
+  findFormula(req).then(formulas => {
+    const formula = formulas[0];
+
+    res.format({
+      'text/html': () =>  res.render('formulas/show', { formula }),
+      'application/json': () => res.json(formula)
+    })
+  });
 });
 
 /*

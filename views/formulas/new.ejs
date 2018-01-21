@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="utf-8">
+  <title>New Chinese Herbal Formula</title>
+
   <head>
     <meta charset="utf-8">
-    <title>New Chinese Herbal Formula</title>
-  </head>
-  <body>
-    <h1>A New formula</h1>
+    <title>All Formulas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #cc0000;
+        font-family: 'Macondo', cursive;
+        color: black;
+      }
 
-    <form action="/formulas" method="POST">
-      <div>
-        <input type="text" name="english_name"/>
-        <input type="text" name="pinyin_name"/>
-      </div>
-      
-      <button type="submit">Save formula</button>
-    </form>
+      .btn {
+        background-color: black;
+        font-family: 'Macondo', cursive;
+        color: white;
+      }
+
+      .heading {
+        padding-top: 20px;
+      }
+
+      .yinyang {
+        padding-top: 50px;
+
+
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="row justify-content-center">
+          <div class="yinyang">
+            <img class="img-fluid" src="yinyang.png" height="50" width="50">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="heading">
+            <h1>A New formula</h1>
+
+            <form action="/formulas" method="POST">
+
+
+              <div class="form-group">
+                <label for="formulaEnglishName">Formula English name</label>
+                <input type="text" class="form-control" name="english_name" placeholder="Formula English name">
+              </div>
+
+              <div class="form-group">
+                <label for="formulaPinyinName">Formula Pinyin name</label>
+                <input type="text" class="form-control" name="pinyin_name" placeholder="Formula Pinyin name">
+              </div>
+
+              <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
   </body>
+
 </html>
