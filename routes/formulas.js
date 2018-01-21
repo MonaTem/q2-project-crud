@@ -10,8 +10,16 @@ console.log("the path is " + __dirname);
   http --json \
     GET 'http://localhost:8000/formulas'
 */
+
+
+
 app.get("/", (req, res) => {
-  findformulas(req).then(formulas => res.json(formulas));
+  findFormulas(req).then(formulas => {
+    res.format({
+      'text/html': () =>  res.render('formulas/index', { formulas }),
+      'application/json': () => res.json(formulas)
+    })
+  });
 });
 
 app.get("/new", (req, res) => {
@@ -22,7 +30,7 @@ app.get("/new", (req, res) => {
     GET 'http://localhost:8000/formulas/1'
 */
 app.get("/:fid", (req, res) => {
-  findformula(req).then(formulas => res.json(formulas[0]));
+  findFormula(req).then(formulas => res.json(formulas[0]));
 });
 
 /*
@@ -31,7 +39,7 @@ app.get("/:fid", (req, res) => {
     english_name='A Short english_name' pinyin_name='A short pinyin_name.'
 */
 app.post("/", (req, res) => {
-  createformula(req).then(formulas => res.json(formulas[0]));
+  createFormula(req).then(formulas => res.json(formulas[0]));
 });
 
 /*
@@ -40,7 +48,7 @@ app.post("/", (req, res) => {
     english_name='COOOL!' pinyin_name='WOOT!'
 */
 app.patch("/:fid", (req, res) => {
-  updateformula(req).then(formulas => res.json(formulas[0]));
+  updateFormula(req).then(formulas => res.json(formulas[0]));
 });
 
 /*
@@ -48,30 +56,30 @@ app.patch("/:fid", (req, res) => {
     DELETE 'http://localhost:8000/formulas/1'
 */
 app.delete("/:fid", (req, res) => {
-  destroyformula(req).then(() => res.sendStatus(204));
+  destroyFormula(req).then(() => res.sendStatus(204));
 });
 
 /********** HELPER FUNCTIONS ************/
 
 // CREATE A formula
-function createformula({ body: { english_name, pinyin_name } }) {
+function createFormula({ body: { english_name, pinyin_name } }) {
   return knex("formulas")
     .returning("*")
     .insert({ english_name, pinyin_name });
 }
 
 // Find all
-function findformulas() {
+function findFormulas() {
   return knex('formulas');
 }
 
 // Find one
-function findformula({params: { fid }}) {
+function findFormula({params: { fid }}) {
   return knex('formulas').where('fid', fid);
 }
 
 // Update
-function updateformula({
+function updateFormula({
   params: { fid },
   body: { english_name, pinyin_name },
 }) {
@@ -82,7 +90,7 @@ function updateformula({
 }
 
 // Destroy
-function destroyformula({params: { fid }}) {
+function destroyFormula({params: { fid }}) {
   return knex('formulas')
     .where('fid', fid)
     .del();
