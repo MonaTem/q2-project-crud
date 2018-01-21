@@ -1,6 +1,7 @@
 const app = require("express").Router();
 const knex = require("../db");
 
+console.log("the path is " + __dirname);
 /*
   RESTful formulas
 */
