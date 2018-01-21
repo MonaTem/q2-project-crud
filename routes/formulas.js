@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.format({
       'text/html': () =>  res.render('formulas/index', { formulas }),
       'application/json': () => res.json(formulas)
-    })
+    });
   });
 });
 
@@ -49,8 +49,16 @@ app.get("/:fid", (req, res) => {
     POST 'http://localhost:8000/formulas' \
     english_name='A Short english_name' pinyin_name='A short pinyin_name.'
 */
+
 app.post("/", (req, res) => {
-  createFormula(req).then(formulas => res.json(formulas[0]));
+  createFormula(req).then(formulas =>{
+    const formula = formulas[0];
+
+    res.format({
+      'text/html': () =>  res.redirect(`/formulas/${formula.fid}`),
+      'application/json': () => res.json(formulas)
+    })
+  });
 });
 
 /*
