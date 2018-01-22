@@ -2,9 +2,9 @@ const knex = require("../db");
 
 // CREATE
 function createSymptom({ body: { symptom } }) {
-  return knex("Symptoms")
+  return knex("symptoms")
     .returning("*")
-    .insert({ symptom, });
+    .insert({ symptom });
 }
 
 // Find all

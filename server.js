@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/', site);  // <----- ADDED
 app.use('/formulas', formulas);
 app.use('/about', about);
+app.use('/symptoms', symptoms);
 
 app.listen(PORT, () => {
   console.log('Server listening on ', PORT);

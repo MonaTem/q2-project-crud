@@ -41,7 +41,7 @@ app.get("/:sid", (req, res) => {
     const symptom = symptoms[0];
 
     res.format({
-      "text/html": () => res.render("symptoms/show", { plan }),
+      "text/html": () => res.render("symptoms/show", { symptom }),
       "application/json": () => res.json(symptom)
     });
   });
@@ -68,7 +68,7 @@ app.post("/", (req, res) => {
 
 /*
   http --json \
-    PATCH 'http://localhost:8000/plans/1' \
+    PATCH 'http://localhost:8000/symptoms/1' \
     symptom='anxiety'
 */
 app.patch("/:sid", (req, res) => {
