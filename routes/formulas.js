@@ -1,10 +1,17 @@
 const app = require("express").Router();
-const knex = require("../db");
 
 console.log("the path is " + __dirname);
 /*
   RESTful formulas
 */
+const {
+  createFormula,
+  findFormulas,
+  findFormula,
+  updateFormula,
+  destroyFormula
+} = require("../models/formulas");
+
 
 /*
   http --json \
@@ -78,41 +85,6 @@ app.delete("/:fid", (req, res) => {
   destroyFormula(req).then(() => res.sendStatus(204));
 });
 
-/********** HELPER FUNCTIONS ************/
 
-// CREATE A formula
-function createFormula({ body: { english_name, pinyin_name } }) {
-  return knex("formulas")
-    .returning("*")
-    .insert({ english_name, pinyin_name });
-}
-
-// Find all
-function findFormulas() {
-  return knex('formulas');
-}
-
-// Find one
-function findFormula({params: { fid }}) {
-  return knex('formulas').where('fid', fid);
-}
-
-// Update
-function updateFormula({
-  params: { fid },
-  body: { english_name, pinyin_name },
-}) {
-  return knex('formulas')
-    .where('fid', fid)
-    .returning('*')
-    .update({english_name, pinyin_name});
-}
-
-// Destroy
-function destroyFormula({params: { fid }}) {
-  return knex('formulas')
-    .where('fid', fid)
-    .del();
-}
 
 module.exports = app;

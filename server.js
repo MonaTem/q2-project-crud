@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const site = require('./routes/site'); // <--- ADDED
 const formulas = require('./routes/formulas');
 const about = require('./routes/about');
+const symptoms = require('./routes/symptoms'); // <--- ADDED
 
 const app = express();
 const PORT = 8000;
