@@ -56,7 +56,7 @@ app.get("/:sid", (req, res) => {
 */
 app.post("/", (req, res) => {
   createSymptom(req).then(symptoms => {
-    const symptom = findSymptoms[0];
+    const symptom = symptoms[0];
 
     res.format({
       "text/html": () => res.redirect(`/symptoms/${symptom.sid}`),
