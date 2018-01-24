@@ -59,6 +59,17 @@ app.get("/:sid/delete", (req, res) => {
   });
   });
 
+  app.get("/:sid/update", (req, res) => {
+    findSymptom(req).then(symptoms => {
+      const symptom = symptoms[0];
+
+      res.format({
+        "text/html": () => res.render("symptoms/update", { symptom }),
+        "application/json": () => res.json(symptom)
+      });
+    });
+    });
+
 
 
 /*
@@ -83,8 +94,10 @@ app.post("/", (req, res) => {
     PATCH 'http://localhost:8000/symptoms/1' \
     symptom='anxiety'
 */
-app.patch("/:sid", (req, res) => {
-  updateSymptom(req).then(symptoms => res.json(symptoms[0]));
+app.post("/update/:sid/", (req, res) => {
+  updateSymptom(req).then(symptoms => {
+    res.redirect(/symptoms/);
+  });
 });
 
 
@@ -99,7 +112,6 @@ app.post("/delete/:sid/", (req, res) => {
   destroySymptom(req).then(symptoms => {
     // res.sendStatus(204);
     res.redirect(/symptoms/);
-
 
   });
 });
