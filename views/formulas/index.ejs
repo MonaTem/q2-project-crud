@@ -20,6 +20,11 @@
     .yinyang {
       padding-top: 50px;
     }
+
+    h3 {
+      color: white;
+    }
+    
     h1 {
       padding-top: 50px;
     }
@@ -47,7 +52,7 @@
     <ul class="list-group">
       <% formulas.forEach(formula => { %>
      <div class="formula-item list-group-item">
-       <h3><%= formula.english_name %></h3>
+     <a href="/formulas/<%= formula.fid %>"><h3><%= formula.english_name %></h3></a>
        <p><%= formula.pinyin_name %></p>
      </div>
      </ul>
