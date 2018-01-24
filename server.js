@@ -14,6 +14,7 @@ const PORT = 8000;
 app.set('view engine', 'ejs');
 
 // Setup Middleware
+app.use(express.static('public'))
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

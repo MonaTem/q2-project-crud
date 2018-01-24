@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Show Chinese Herbal symptom</title>
+  <title>Delete Chinese Herbal formula</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <style>
     body {
@@ -21,12 +21,18 @@
 
     }
 
-    .symptom-item {
+    .formula-item {
       color: white;
     }
 
     .yinyang {
       padding-top: 50px;
+    }
+
+    .btn {
+      background-color: black;
+      font-family: 'Macondo', cursive;
+      color: white;
     }
 
   </style>
@@ -45,16 +51,25 @@
 
       <div class="row justify-content-center">
         <div class="heading">
-          <h1>Show A Single Symptom</h1>
+          <h1>Delete A Single Formula</h1>
         </div>
       </div>
       </header>
 
-      <div class="symptom-item row justify-content-center">
+      <div class="formula-item row justify-content-center">
         <h3>
-          <%= symptom.symptom %>
+          <%= formula.formula %>
         </h3>
       </div>
+      <!---Many browsers won't accept the DELETE method so using POST to accomplish delete  -->
+      <form action="/formulas/delete/<%= formula.fid %>" method="POST">
+
+
+      <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary">Delete</button>
+      </div>
+
+    </form>
 
   </div>
 </body>
@@ -64,9 +79,8 @@
      <span class="navbar-toggler-icon"></span>
    </button>
    <div class="navbar-nav">
-    <a class="navbar-brand text-white" href="#">Show Single symptom</a>
-    <a class="nav-item nav-link text-white" href="/symptoms/<%= symptom.sid %>/delete">Delete this symptom</a>
-    <a class="nav-item nav-link text-white" href="/symptoms">All symptoms</a>
+    <a class="navbar-brand text-white" href="#">Show Single formula</a>
+    <a class="nav-item nav-link text-white" href="/formulas">All formulas</a>
 
   </div>
 

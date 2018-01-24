@@ -47,9 +47,20 @@ app.get("/:fid", (req, res) => {
     res.format({
       'text/html': () =>  res.render('formulas/show', { formula }),
       'application/json': () => res.json(formula)
-    })
+    });
   });
 });
+
+app.get("/:fid/delete", (req, res) => {
+  findFormula(req).then(formulas => {
+    const formula = formulas[0];
+
+    res.format({
+      "text/html": () => res.render("formulas/delete", { formula }),
+      "application/json": () => res.json(formula)
+    });
+  });
+  });
 
 /*
   http --json \
@@ -80,11 +91,17 @@ app.patch("/:fid", (req, res) => {
 /*
   http --json \
     DELETE 'http://localhost:8000/formulas/1'
+    Using app.post for delete because a lot of browsers won't take
+    the delete method from a form now so you have to trick them
 */
-app.delete("/:fid", (req, res) => {
-  destroyFormula(req).then(() => res.sendStatus(204));
-});
+app.post("/delete/:fid/", (req, res) => {
+  console.log("we are in the delete");
+  destroyFormula(req).then(formulas => {
+    res.redirect(/formulas/);
 
+
+  });
+});
 
 
 module.exports = app;
