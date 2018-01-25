@@ -1,7 +1,7 @@
 module.exports = {
   up(knex, Promise) {
     return knex.schema.createTable('symptoms', (table) => {
-      table.increments();
+      table.increments('sid');
       table.text('symptom').notNull();
     });
   },
