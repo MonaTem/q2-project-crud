@@ -1,6 +1,9 @@
 {
   "name": "q2-project-crud",
   "version": "1.0.0",
+  "engines": {
+    "node": "9.3.0"
+  },
   "description": "q2-project-crud",
   "main": "server.js",
   "scripts": {
