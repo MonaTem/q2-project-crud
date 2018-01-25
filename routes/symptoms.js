@@ -93,6 +93,9 @@ app.post("/", (req, res) => {
   http --json \
     PATCH 'http://localhost:8000/symptoms/1' \
     symptom='anxiety'
+    Using app.post for update because patch doesn't
+    seem to work in our form, but post does--although patch
+    works fine in httpie or curl
 */
 app.post("/update/:sid/", (req, res) => {
   updateSymptom(req).then(symptoms => {

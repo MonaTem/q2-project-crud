@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <!-- Add Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <style>body {
-    background-color: #cc0000;
-    font-family: 'Macondo', cursive;
-    color: black; }
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <!-- Add Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #cc0000;
+      font-family: 'Macondo', cursive;
+      color: black;
+    }
 
     .yinyang {
       padding-top: 50px;
@@ -18,45 +21,63 @@
       padding-top: 50px;
     }
 
+    h3 {
+      color: white;
+    }
+
+    .list-group-item {
+      background-color: #cc0000;
+      font-family: 'Macondo', cursive;
+      color: white;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
-
-  </head>
-  <body>
+<body>
   <div class="container">
     <header>
       <div class="row justify-content-center">
         <div class="yinyang">
-          <img class="img-fluid" src="http://localhost:8000/images/yinyang.png" height="50" width="50">
+          <img class="img-fluid" src="/images/yinyang.png" height="50" width="50">
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="heading">
-    <h1>Chinese Herbal Formulas</h1>
-    <h2>Chinese Herbal Formula Database</h2>
+          <h1>Chinese Herbal Formulas</h1>
+          <h2>Chinese Herbal Formula Database</h2>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <ul class="list-group">
+        <div class="home-page-item list-group-item">
+          <li class="list-group-item"><a href="/formulas"><h3>All Formulas</h3></a></li>
+          <li class="list-group-item"><a href="/formulas/new"><h3>Create New Formula</h3></a></li>
+          <li class="list-group-item"><a href="/symptoms"><h3>All Symptoms</h3></a></li>
+          <li class="list-group-item"><a href="/symptoms/new"><h3>Create New Symptom</h3></a></li>
+        </div>
+      </ul>
+
+
+    </main>
   </div>
-</div>
-</header>
-
-<main>
-
-
-</main>
-</div>
-<nav class="navbar navbar-inverse fixed-bottom navbar-toggleable-md" style="background-color: #000000;">
-  <!-- Navbar content -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
+  <nav class="navbar-expand-sm  navbar-inverse fixed-bottom navbar-toggleable-md" style="background-color: #000000;">
+    <!-- Navbar content -->
+    <button class="navbar navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar navbar-toggler-icon"></span>
  </button>
- <div class="navbar-nav">
-  <a class="navbar-brand text-white" href="#">Home</a>
-  <a class="nav-item nav-link text-white" href="about">About</a>
+    <div class="navbar navbar-nav">
+      <a class="navbar navbar-brand text-white" href="#">Home</a>
+      <a class="nav-item nav-link text-white" href="about">About</a>
 
-</div>
+    </div>
 
-</nav>
-  </body>
+  </nav>
+</body>
+
 </html>

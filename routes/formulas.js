@@ -62,6 +62,17 @@ app.get("/:fid/delete", (req, res) => {
   });
   });
 
+  app.get("/:fid/update", (req, res) => {
+    findFormula(req).then(formulas => {
+      const formula = formulas[0];
+
+      res.format({
+        "text/html": () => res.render("formulas/update", { formula }),
+        "application/json": () => res.json(formula)
+      });
+    });
+    });
+
 /*
   http --json \
     POST 'http://localhost:8000/formulas' \
@@ -82,10 +93,19 @@ app.post("/", (req, res) => {
 /*
   http --json \
     PATCH 'http://localhost:8000/formulas/1' \
-    english_name='COOOL!' pinyin_name='WOOT!'
+    english_name='Loony Toons!' pinyin_name='haha'
 */
-app.patch("/:fid", (req, res) => {
-  updateFormula(req).then(formulas => res.json(formulas[0]));
+
+/*
+    Using app.post for update because patch doesn't
+    seem to work in our form, but post does--although patch
+    works fine in httpie or curl
+*/
+app.post("/update/:fid/", (req, res) => {
+  console.log("we are in formula update " +  req);
+  updateFormula(req).then(formulas => {
+    res.redirect(/formulas/);
+  });
 });
 
 /*

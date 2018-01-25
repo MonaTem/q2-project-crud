@@ -24,6 +24,7 @@ function updateFormula({
   params: { fid },
   body: { english_name, pinyin_name },
 }) {
+  console.log("we are in updateFormula function " + fid + " " + english_name + " " + pinyin_name);
   return knex('formulas')
     .where('fid', fid)
     .returning('*')

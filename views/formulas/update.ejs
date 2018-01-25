@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>New symptom</title>
+  <title>New formula</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <style>
     body {
@@ -39,17 +39,22 @@
       </div>
       <div class="row justify-content-center">
         <div class="heading">
-          <h1>Update a Symptom</h1>
+          <h1>Update a formula</h1>
         </div>
       </div>
     </header>
 
-    <form action="/symptoms/update/<%= symptom.sid %>" method="POST">
+    <form action="/formulas/update/<%= formula.fid %>" method="POST">
 
 
       <div class="form-group">
-        <label for="symptom">symptom</label>
-        <input type="text" class="form-control" name="symptom" placeholder="<%= symptom.symptom %>">
+        <label for="formulaEnglishName">Formula English Name</label>
+        <input type="text" class="form-control" name="english_name" placeholder="<%= formula.english_name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="formulaPinyinName">Formula Pinyin name</label>
+        <input type="text" class="form-control" name="pinyin_name" placeholder="<%= formula.pinyin_name %>">
       </div>
 
       <div class="row justify-content-center">
