@@ -39,40 +39,25 @@
       </div>
       <div class="row justify-content-center">
         <div class="heading">
-          <h1>A New symptom</h1>
+          <h1>Update a Symptom</h1>
         </div>
       </div>
     </header>
 
-    <form action="/symptoms" method="POST">
+    <form action="/symptoms/update/<%= symptom.sid %>" method="POST">
 
 
       <div class="form-group">
         <label for="symptom">symptom</label>
-        <input type="text" class="form-control" name="symptom" placeholder="symptom">
+        <input type="text" class="form-control" name="symptom" placeholder="<%= symptom.symptom %>">
       </div>
 
       <div class="row justify-content-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
 
   </div>
 </body>
-<nav class="navbar-expand-sm  navbar-inverse fixed-bottom navbar-toggleable-md" style="background-color: #000000;">
-  <!-- Navbar content -->
-  <button class="navbar navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
- <span class="navbar navbar-toggler-icon"></span>
-</button>
-  <div class="navbar navbar-nav">
-    <a class="navbar navbar-brand text-white" href="/">Home</a>
-    <a class="nav-item nav-link text-white" href="/about">About</a>
-    <a class="nav-item nav-link text-white" href="/symptoms">All Symptoms</a>
-    <a class="nav-item nav-link text-white" href="/formulas">All Formulas</a>
-
-  </div>
-
-</nav>
-
 
 </html>

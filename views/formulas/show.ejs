@@ -25,6 +25,10 @@
       color: white;
     }
 
+    .yinyang {
+      padding-top: 50px;
+    }
+
   </style>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,6 +37,11 @@
 <body>
   <div class="container">
     <header>
+      <div class="row justify-content-center">
+          <div class="yinyang">
+            <img class="img-fluid" src="/images/yinyang.png" height="50" width="50">
+          </div>
+        </div>
 
       <div class="row justify-content-center">
         <div class="heading">
@@ -51,13 +60,15 @@
       </div>
       </div>
   </div>
-  <nav class="navbar navbar-inverse fixed-bottom navbar-toggleable-md" style="background-color: #000000;">
+  <nav class="navbar-expand-sm  navbar-inverse fixed-bottom navbar-toggleable-md" style="background-color: #000000;">
     <!-- Navbar content -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
    </button>
    <div class="navbar-nav">
     <a class="navbar-brand text-white" href="#">Show Single Formula</a>
+    <a class="nav-item nav-link text-white" href="/formulas/<%= formula.fid %>/update">Update this formula</a>
+    <a class="nav-item nav-link text-white" href="/formulas/<%= formula.fid %>/delete">Delete this formula</a>
     <a class="nav-item nav-link text-white" href="/formulas">All Formulas</a>
 
   </div>

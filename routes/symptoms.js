@@ -1,6 +1,7 @@
 /*
   RESTful symptoms
 */
+
 const app = require('express').Router();
 
 const {
@@ -47,6 +48,28 @@ app.get("/:sid", (req, res) => {
   });
 });
 
+app.get("/:sid/delete", (req, res) => {
+  findSymptom(req).then(symptoms => {
+    const symptom = symptoms[0];
+
+    res.format({
+      "text/html": () => res.render("symptoms/delete", { symptom }),
+      "application/json": () => res.json(symptom)
+    });
+  });
+  });
+
+  app.get("/:sid/update", (req, res) => {
+    findSymptom(req).then(symptoms => {
+      const symptom = symptoms[0];
+
+      res.format({
+        "text/html": () => res.render("symptoms/update", { symptom }),
+        "application/json": () => res.json(symptom)
+      });
+    });
+    });
+
 
 
 /*
@@ -56,7 +79,7 @@ app.get("/:sid", (req, res) => {
 */
 app.post("/", (req, res) => {
   createSymptom(req).then(symptoms => {
-    const symptom = findSymptoms[0];
+    const symptom = symptoms[0];
 
     res.format({
       "text/html": () => res.redirect(`/symptoms/${symptom.sid}`),
@@ -70,19 +93,32 @@ app.post("/", (req, res) => {
   http --json \
     PATCH 'http://localhost:8000/symptoms/1' \
     symptom='anxiety'
+    Using app.post for update because patch doesn't
+    seem to work in our form, but post does--although patch
+    works fine in httpie or curl
 */
-app.patch("/:sid", (req, res) => {
-  updateSymptom(req).then(symptoms => res.json(symptoms[0]));
+app.post("/update/:sid/", (req, res) => {
+  updateSymptom(req).then(symptoms => {
+    res.redirect(/symptoms/);
+  });
 });
 
 
 /*
   http --json \
     DELETE 'http://localhost:8000/symptoms/1'
+    Using app.post for delete because a lot of browsers won't take
+    the delete method from a form now so you have to trick them
 */
-app.delete("/:sid", (req, res) => {
-  destroySymptom(req).then(() => res.sendStatus(204));
+app.post("/delete/:sid/", (req, res) => {
+  console.log("we are in the delete");
+  destroySymptom(req).then(symptoms => {
+    // res.sendStatus(204);
+    res.redirect(/symptoms/);
+
+  });
 });
+
 
 
 module.exports = app;
